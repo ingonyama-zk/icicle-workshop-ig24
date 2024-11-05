@@ -1,0 +1,16 @@
+[package]
+name = "kzg-icicle"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+icicle-runtime = { git = "https://github.com/ingonyama-zk/icicle.git", branch = "main" }
+icicle-core = { git = "https://github.com/ingonyama-zk/icicle.git", branch = "main" }
+icicle-babybear = { git = "https://github.com/ingonyama-zk/icicle.git", branch = "main" }
+icicle-bn254 = { git = "https://github.com/ingonyama-zk/icicle.git", branch = "main" }
+rand = "0.8"
+clap = { version = "<=4.4.12", features = ["derive"] }
+
+[features]
