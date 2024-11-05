@@ -30,7 +30,13 @@ struct Args {
 // Load backend and set device
 fn try_load_and_set_backend_device(args: &Args) {
     if args.device_type != "CPU" {
-        icicle_runtime::runtime::load_backend_from_env_or_default().unwrap();
+        match icicle_runtime::load_backend("../../cuda_backend") {
+            Ok(_) => println!("Successfully loaded the CUDA backend."),
+            Err(error) => {
+                eprintln!("Failed to load the CUDA backend: {:?}", error);
+                std::process::exit(1); // Exit the program with an error code
+            }
+        };
     }
     println!("Setting device {}", args.device_type);
     let device = icicle_runtime::Device::new(&args.device_type, 0 /* =device_id*/);
@@ -69,6 +75,8 @@ where
     p
 }
 
+// Run this with:
+// cargo run --package polynomial-icicle --example complex_arithmetic -- --max-ntt-log-size 22 --poly-log-size 18 --device-type "CUDA"
 fn main() {
     let args = Args::parse();
     println!("{:?}", args);
