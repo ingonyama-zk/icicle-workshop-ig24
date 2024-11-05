@@ -12,7 +12,7 @@ Welcome to the ICICLE Workshop! In this session, we'll dive into hands-on Rust e
 Start by cloning this repository to your local machine:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ingonyama-zk/icicle-workshop-ig24.git
 ```
 
 ---
