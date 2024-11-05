@@ -40,7 +40,7 @@ Let’s bring the ICICLE examples to life! Run these commands:
    ```bash
    ~/home/icicle-workshop-ig24/rust/polynomials$ cargo run --package polynomial-icicle --example simple_arithmetic
 2. **Complex Arithmetic Example (with specific configurations):**
-   ```console
+   ```bash
    ~/home/icicle-workshop-ig24/rust/polynomials$ cargo run --package polynomial-icicle --example complex_arithmetic -- --max-ntt-log-size 22 --poly-log-size 18 --device-type "CUDA"
 
 
