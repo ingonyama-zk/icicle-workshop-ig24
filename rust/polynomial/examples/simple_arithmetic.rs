@@ -20,7 +20,8 @@ fn init_ntt_domain(max_ntt_size: u64) {
     initialize_domain(rou_bn254, &NTTInitDomainConfig::default()).unwrap();
 }
 
-fn main() {
+/// Function to load the CUDA backend and initialize the GPU or fallback to CPU
+fn setup_device() -> Device {
     // Attempt to load the CUDA backend with better error handling
     match icicle_runtime::load_backend("../../cuda_backend") {
         Ok(_) => println!("Successfully loaded the CUDA backend."),
@@ -44,6 +45,12 @@ fn main() {
         println!("GPU not available. Using CPU for computations.");
         gpu_device = cpu_device.clone();
     }
+    gpu_device
+}
+
+// Run with: cargo run --package polynomial-icicle --example simple_arithmetic
+fn main() {
+    let gpu_device = setup_device();
 
     // Set up a constant size used for polynomial operations
     let polynomial_size: usize = 1024;
